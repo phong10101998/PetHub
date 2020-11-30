@@ -7,25 +7,28 @@ import androidx.viewpager.widget.ViewPager
 import com.example.haivaiapp.ViewPage.ViewpagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    val saveToHistory : Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpViewPager()
-        bottomView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener {
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> {
+                R.id.miHome -> {
                     //replaceFragment(HomeFragment(), R.id.homefr)
                     viewPager.currentItem = 0
                 }
-                R.id.favourite -> {
-                    //replaceFragment(FavouriteFragment(), R.id.favouritefr)
+                R.id.miSearch -> {
                     viewPager.currentItem = 1
                 }
-                R.id.setting -> {
-                    //replaceFragment(SettingFragment(), R.id.settingfr)
+                R.id.miProfile -> {
                     viewPager.currentItem = 2
+                }
+                R.id.miSettings -> {
+                    viewPager.currentItem = 3
                 }
             }
             false
@@ -39,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         )
         viewPager.adapter = adapter
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -48,7 +50,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                bottomView.menu.getItem(position).isChecked = true
+                bottomNavigationView.menu.getItem(position).isChecked = true
+
 
 
             }
