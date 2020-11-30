@@ -1,4 +1,4 @@
-package com.example.haivaiapp.Home
+package com.example.haivaiapp.home
 
 
 import android.view.View

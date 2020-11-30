@@ -1,13 +1,14 @@
 package com.example.haivaiapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.haivaiapp.ViewPage.ViewpagerAdapter
+import com.example.haivaiapp.postImage.PickImageActivity
+import com.example.haivaiapp.viewPagerMain.ViewpagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val saveToHistory : Boolean = true
@@ -33,6 +34,10 @@ class MainActivity : AppCompatActivity() {
             }
             false
         })
+        fab.setOnClickListener{
+            intent = Intent(this,PickImageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpViewPager() {

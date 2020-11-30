@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Home.HomeFragment"
-    android:id="@+id/homefr">
+    tools:context=".home.HomeFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:backgroundTint="@color/white"
-            android:background="@color/purple_200"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             android:layout_gravity="center|center_horizontal"
             >
             <TextView
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
-                android:text="HaiVaiNoi.com"
+                android:text="@string/app_name"
                 android:textStyle="bold|italic"
                 android:fontFamily="@font/architep"
                 android:textSize="25dp"/>
