@@ -4,24 +4,26 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HaiVaiApp"
-        android:requestLegacyExternalStorage="true">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.HaiVaiApp">
+        <activity android:name=".introduceApp.IntroduceApp"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.haivaiapp.postImage.PickImageActivity"/>
-
+        <activity android:name=".postImage.PickImageActivity" />
     </application>
 
 </manifest>

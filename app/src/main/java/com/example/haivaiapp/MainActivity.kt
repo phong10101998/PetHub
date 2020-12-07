@@ -11,31 +11,34 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    val saveToHistory : Boolean = true
+    val saveToHistory: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpViewPager()
-        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.miHome -> {
-                    //replaceFragment(HomeFragment(), R.id.homefr)
-                    viewPager.currentItem = 0
+        bottomNavigationView.run {
+            background = null
+            setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener {
+                when (it.itemId) {
+                    R.id.miHome -> {
+                        viewPager.currentItem = 0
+                    }
+                    R.id.miSearch -> {
+                        viewPager.currentItem = 1
+                    }
+
+                    R.id.miProfile -> {
+                        viewPager.currentItem = 2
+                    }
+                    R.id.miSettings -> {
+                        viewPager.currentItem = 3
+                    }
                 }
-                R.id.miSearch -> {
-                    viewPager.currentItem = 1
-                }
-                R.id.miProfile -> {
-                    viewPager.currentItem = 2
-                }
-                R.id.miSettings -> {
-                    viewPager.currentItem = 3
-                }
-            }
-            false
-        })
-        fab.setOnClickListener{
-            intent = Intent(this,PickImageActivity::class.java)
+                false
+            })
+        }
+        fab.setOnClickListener {
+            intent = Intent(this, PickImageActivity::class.java)
             startActivity(intent)
         }
     }
@@ -56,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 bottomNavigationView.menu.getItem(position).isChecked = true
-
 
 
             }

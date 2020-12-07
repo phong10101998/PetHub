@@ -1,21 +1,23 @@
 package com.example.haivaiapp.postImage
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.haivaiapp.R
 import kotlinx.android.synthetic.main.activity_pick_image.*
+import kotlinx.android.synthetic.main.picture_item.*
 
-class PickImageActivity : AppCompatActivity() {
+open class PickImageActivity : AppCompatActivity() {
     companion object {
         private const val COLUMN = 3
-        private const val PERMISSION_CODE = 100
-        private const val ARG_PICTURE = "picture"
+        const val PERMISSION_CODE = 100
     }
 
     private var adapter: PictureAdapter? = null
@@ -25,22 +27,27 @@ class PickImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pick_image)
         checkPermission()
+
     }
 
     private fun initAdapter() {
         pictureList.addAll(Utils.getImage(this))
         pictureList.reverse()
-        adapter = PictureAdapter(pictureList)
-        adapter?.onItemClick = {
+        adapter = PictureAdapter(pictureList) { position, path ->
 
+            replaceFragment(PostImageFragment.newInstance(path), isAddToBackStack = true)
         }
-       recyclerViewImage.layoutManager = GridLayoutManager(this, COLUMN)
+
+        recyclerViewImage.layoutManager = GridLayoutManager(this, COLUMN)
         recyclerViewImage.adapter = adapter
     }
 
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) ==
                 PackageManager.PERMISSION_DENIED
             ) {
                 val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -65,5 +72,14 @@ class PickImageActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "deo cho", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment, isAddToBackStack: Boolean = true) {
+        val replace =
+            supportFragmentManager.beginTransaction().replace(R.id.framePickImage, fragment, null)
+        if (isAddToBackStack) {
+            replace.addToBackStack(null)
+        }
+        replace.commit()
     }
 }

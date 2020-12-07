@@ -4,9 +4,11 @@ package com.example.haivaiapp.viewPagerMain
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+
 import com.example.haivaiapp.search.SearchFragment
 import com.example.haivaiapp.setting.SettingFragment
 import com.example.haivaiapp.home.HomeFragment
+
 import com.example.haivaiapp.profile.ProfileFragment
 
 
@@ -20,7 +22,7 @@ class ViewpagerAdapter(fm: FragmentManager, behavior: Int) :
         return when (position) {
             0 -> HomeFragment()
             1 -> SearchFragment()
-            2-> ProfileFragment()
+            2 -> ProfileFragment()
             else -> SettingFragment()
         }
     }

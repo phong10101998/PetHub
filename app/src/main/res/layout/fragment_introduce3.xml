@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:id="@+id/profilefragment">
+    tools:context=".introduceApp.Introduce3">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Profile"
-        android:gravity="center" />
+        android:text="fr3"/>
 
 </FrameLayout>

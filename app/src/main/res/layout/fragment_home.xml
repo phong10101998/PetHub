@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".home.HomeFragment">
+    tools:context=".home.HomeFragment"
+    android:id="@+id/homeFragment">
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appBarLayoutHome"
-        android:orientation="vertical"
         android:background="@color/white"
-        >
+        android:orientation="vertical">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/appIcon"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:backgroundTint="@color/white"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             android:layout_gravity="center|center_horizontal"
-            >
+            android:backgroundTint="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
             <TextView
+                android:id="@+id/refresh"
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
-                android:text="@string/app_name"
-                android:textStyle="bold|italic"
                 android:fontFamily="@font/architep"
-                android:textSize="25dp"/>
+                android:text="@string/app_name"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/logoapp"
-                android:layout_marginLeft="250dp"/>
+                android:layout_marginLeft="250dp"
+                android:src="@drawable/logoapp" />
 
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
